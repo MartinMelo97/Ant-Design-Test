@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
+
+.header, .menu {
+    background-color: orange;
+}
+
+.items-color-white {
+    color: #fff !important;
+
+    &:hover {
+        color: #fff !important;
+    }
+}
+
+.header-footer-text {
+    font-size: 1.5em;
+    font-weight: 700;
+    font-family: 'Pacifico', sans-serif;
+    color: #fff;
+}
+
+.footer {
+    background-color: orange;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.content {
+    min-height: 90vh;
+}
+
+.main-container {
+    min-height: 80vh;
+    width: 90vw;
+    background-color: #fff;
+    border-radius: 5px;
+    margin: 5vh 5vw;
+}
+
