@@ -1,26 +1,50 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Layout, Menu } from 'antd'
+import 'antd/dist/antd.css'
+import { NavLink, Switch, Route } from 'react-router-dom'
 import './App.css';
+import Home from './components/home/Home'
+import Products from './components/products/Products'
+import Patients from './components/patients/Patients'
 
 class App extends Component {
   render() {
+    const { Header, Content, Footer } = Layout
+    const { Item } = Menu
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
+      <Layout className="layout">
+        <Header>
+          <Menu
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={['home']}
+          style={{lineHeight: "64px"}}
           >
-            Learn React
-          </a>
-        </header>
-      </div>
+            <Item key="home">
+            <NavLink to="/">
+              Inicio
+            </NavLink>
+            </Item>
+            <Item key="products">
+            <NavLink to="products">
+            Productos
+            </NavLink>
+            </Item>
+            <Item key="patients">
+            <NavLink to="patients">
+            Pacientes
+            </NavLink>
+            </Item>
+          </Menu>
+        </Header>
+        <Content>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/products" component={Products} />
+            <Route exact path="/patients" component={Patients} />
+          </Switch>
+        </Content>
+      </Layout>
     );
   }
 }
