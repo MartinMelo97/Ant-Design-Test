@@ -8,16 +8,34 @@ import Products from './components/products/Products'
 import Patients from './components/patients/Patients'
 
 class App extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      actualRoute: null
+    }
+  }
+
+  componentDidMount = () => {
+    let path = window.location.pathname
+    let only_path = path.replace("/", "")
+    console.log(only_path)
+    if(only_path === "") only_path = "home"
+    this.setState({actualRoute: only_path})
+  }
+
   render() {
     const { Header, Content, Footer } = Layout
     const { Item } = Menu
     return (
       <Layout className="layout">
         <Header className="header">
+        {this.state.actualRoute ?
           <Menu
           className="menu"
+          theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={['home']}
+          defaultSelectedKeys={[this.state.actualRoute]}
           style={{lineHeight: "64px"}}
           >
             <Item key="home" className="header-footer-text">
@@ -36,6 +54,7 @@ class App extends Component {
             </NavLink>
             </Item>
           </Menu>
+          : null}
         </Header>
         <Content className="content">
           <div className="main-container">
