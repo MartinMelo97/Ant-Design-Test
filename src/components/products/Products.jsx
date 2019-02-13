@@ -1,7 +1,60 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { Card, Icon, Avatar } from 'antd';
+import './products.scss'
+class Products extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            products: [
+                {
+                    name: "Chochitos",
+                    precio: "$250.00",
+                    desc: "Para todo tipo de mal",
+                    img: "https://www.supermexicanos.com/sitio/wp-content/uploads/2012/09/chochos.jpg"
+                },
+                {
+                    name: "Loratadina",
+                    precio: "$50.00",
+                    desc: "Alergias",
+                    img: "https://www.laboratoriochile.cl/wp-content//uploads/2018/07/Loratadina_10MG_30C_BE.jpg"
+                },
+                {
+                    name: "Ibuprofeno",
+                    precio: "$20.00",
+                    desc: "Alternativa al paracetamol",
+                    img: "https://www.laboratoriochile.cl/wp-content//uploads/2016/04/Ibuprofeno_600MG_20C.jpg"
+                }
+            ]
+        }
+    }
 
-const Products = () => (
-    <h1>Productos para el 14 de Febrero</h1>
-)
+    render() {
+        const { Meta } = Card;
+        return(
+            <div>
+                {this.state.products.map((product, index)=>(
+                     <Card
+                     className="card"
+                     cover={<img 
+                                className="card-img" 
+                                src={product.img} 
+                                alt={product.name} 
+                            />}
+                     actions={[
+                                <Icon type="setting"/>,
+                                <Icon type="edit"/>
+                            ]}
+                    >
+                    <Meta 
+                    avatar={<Avatar src="https://avatars2.githubusercontent.com/u/6130385?s=460&v=4" />}
+                    title={product.name}
+                    description={product.desc}
+                    />
+                    </Card>
+                ))}
+            </div>
+        );
+    }
+ }
 
-export default Products
+ export default Products
