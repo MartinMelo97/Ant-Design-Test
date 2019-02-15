@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Icon, Avatar } from 'antd';
+import { Card, Icon, Avatar, Row, Col } from 'antd';
 import './products.scss'
 class Products extends Component {
     constructor(props) {
@@ -23,6 +23,30 @@ class Products extends Component {
                     precio: "$20.00",
                     desc: "Alternativa al paracetamol",
                     img: "https://www.laboratoriochile.cl/wp-content//uploads/2016/04/Ibuprofeno_600MG_20C.jpg"
+                },
+                {
+                    name: "Ibuprofeno",
+                    precio: "$20.00",
+                    desc: "Alternativa al paracetamol",
+                    img: "https://www.laboratoriochile.cl/wp-content//uploads/2016/04/Ibuprofeno_600MG_20C.jpg"
+                },
+                {
+                    name: "Ibuprofeno",
+                    precio: "$20.00",
+                    desc: "Alternativa al paracetamol",
+                    img: "https://www.laboratoriochile.cl/wp-content//uploads/2016/04/Ibuprofeno_600MG_20C.jpg"
+                },
+                {
+                    name: "Ibuprofeno",
+                    precio: "$20.00",
+                    desc: "Alternativa al paracetamol",
+                    img: "https://www.laboratoriochile.cl/wp-content//uploads/2016/04/Ibuprofeno_600MG_20C.jpg"
+                },
+                {
+                    name: "Ibuprofeno",
+                    precio: "$20.00",
+                    desc: "Alternativa al paracetamol",
+                    img: "https://www.laboratoriochile.cl/wp-content//uploads/2016/04/Ibuprofeno_600MG_20C.jpg"
                 }
             ]
         }
@@ -32,7 +56,9 @@ class Products extends Component {
         const { Meta } = Card;
         return(
             <div>
+                <Row gutter={16}>
                 {this.state.products.map((product, index)=>(
+                    <Col span={8} >
                      <Card
                      className="card"
                      cover={<img 
@@ -41,17 +67,19 @@ class Products extends Component {
                                 alt={product.name} 
                             />}
                      actions={[
-                                <Icon type="setting"/>,
-                                <Icon type="edit"/>
+                                <Icon type="dollar" />,
+                                <Icon type="shopping-cart" />
                             ]}
                     >
                     <Meta 
                     avatar={<Avatar src="https://avatars2.githubusercontent.com/u/6130385?s=460&v=4" />}
-                    title={product.name}
+                    title={`${product.name} - ${product.precio}`}
                     description={product.desc}
                     />
                     </Card>
+                    </Col>
                 ))}
+                </Row>
             </div>
         );
     }
